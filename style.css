@@ -191,22 +191,23 @@ h1, h2, h3 {
 
 /* Gallery */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    columns: 3 250px;
     gap: 1.5rem;
     padding: 0 2rem;
 }
 
 .gallery-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5rem;
     overflow: hidden;
     border-radius: 10px;
-    aspect-ratio: 1;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     transition: transform 0.5s ease;
 }
 

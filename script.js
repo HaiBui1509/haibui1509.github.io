@@ -11,7 +11,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Countdown Timer Logic
 // Set the wedding date to Oct 15, 2026, 10:00:00 (for example)
-const countDownDate = new Date("Oct 15, 2026 10:00:00").getTime();
+const countDownDate = new Date("Mar 28, 2026 10:00:00").getTime();
 
 // Update the count down every 1 second
 const x = setInterval(function() {
