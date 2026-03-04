@@ -105,6 +105,21 @@ function closeLightbox() {
     }
 }
 
+// --- WISH MODAL FUNCTIONS ---
+function openWishModal() {
+    const modal = document.getElementById("wish-modal");
+    if (modal) {
+        modal.classList.remove("hidden");
+    }
+}
+
+function closeWishModal() {
+    const modal = document.getElementById("wish-modal");
+    if (modal) {
+        modal.classList.add("hidden");
+    }
+}
+
 function changeImage(direction) {
     currentImageIndex += direction;
     // Loop back

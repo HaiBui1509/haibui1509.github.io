@@ -133,6 +133,14 @@
                 </div>
             </div>
         </div>
+        <!-- Wish Book Section -->
+        <div style="margin-top: 5rem; text-align: center;" class="animate-on-scroll slide-up">
+            <h2 class="section-title" style="margin-bottom: 1.5rem; font-size: 2.2rem;">Sổ Lưu Bút</h2>
+            <p class="intro-text" style="max-width: 600px; margin: 0 auto 2rem; padding: 0 1rem;">Những lời chúc phúc
+                chân thành của bạn là món quà quý giá nhất dành cho chúng tôi.</p>
+            <button class="gift-btn" onclick="openWishModal()" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Viết Lời
+                Chúc</button>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -148,6 +156,34 @@
         <button class="prev-btn" onclick="changeImage(-1)">&#10094;</button>
         <img id="lightbox-img" class="lightbox-content" src="">
         <button class="next-btn" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+    <!-- Wish Modal (Google Form iframe) -->
+    <div id="wish-modal" class="lightbox hidden"
+        style="display: flex; align-items: center; justify-content: center; z-index: 1001;">
+        <div class="wish-modal-content">
+            <span class="close-btn wish-close" onclick="closeWishModal()">&times;</span>
+            <h2
+                style="font-family: var(--font-heading); color: var(--primary-color); text-align: center; margin-bottom: 1rem;">
+                Gửi Lời Chúc</h2>
+            <iframe id="wish-iframe"
+                src="https://docs.google.com/forms/d/e/1FAIpQLScJpksQ1w1yM5M1T8I1eLd8OqU0N1-PLACEHOLDER/viewform?embedded=true"
+                frameborder="0" marginheight="0" marginwidth="0">Đang tải...</iframe>
+        </div>
+    </div>
+
+    <!-- Wish Modal (Google Form iframe) -->
+    <div id="wish-modal" class="lightbox hidden"
+        style="display: flex; align-items: center; justify-content: center; z-index: 1001;">
+        <div class="wish-modal-content">
+            <span class="close-btn wish-close" onclick="closeWishModal()">&times;</span>
+            <h2
+                style="font-family: var(--font-heading); color: var(--primary-color); text-align: center; margin-bottom: 1rem;">
+                Gửi Lời Chúc</h2>
+            <iframe id="wish-iframe"
+                src="https://docs.google.com/forms/d/e/1FAIpQLScJpksQ1w1yM5M1T8I1eLd8OqU0N1-PLACEHOLDER/viewform?embedded=true"
+                frameborder="0" marginheight="0" marginwidth="0">Đang tải...</iframe>
+        </div>
     </div>
 
     <script src="script.js"></script>
