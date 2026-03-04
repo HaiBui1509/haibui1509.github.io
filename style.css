@@ -1,12 +1,14 @@
 /* Google Fonts */
 :root {
-    --primary-color: #8B7A58; /* Elegant Gold */
-    --secondary-color: #F8F5EE; /* Ivory Background */
+    --primary-color: #8B7A58;
+    /* Elegant Gold */
+    --secondary-color: #F8F5EE;
+    /* Ivory Background */
     --text-color: #333333;
     --light-color: #ffffff;
     --font-heading: 'Playfair Display', serif;
     --font-text: 'Montserrat', sans-serif;
-    
+
     --transition: 0.3s ease;
 }
 
@@ -24,7 +26,9 @@ body {
 }
 
 /* Typography elements */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: var(--font-heading);
     font-weight: 700;
 }
@@ -50,7 +54,7 @@ h1, h2, h3 {
 /* Cover Section */
 #cover {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    background: url('assets/img_wedding/cover.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +66,10 @@ h1, h2, h3 {
 #cover::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.4);
 }
 
@@ -146,7 +153,7 @@ h1, h2, h3 {
     background: var(--light-color);
     padding: 3rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     max-width: 400px;
     flex: 1;
     min-width: 300px;
@@ -169,7 +176,8 @@ h1, h2, h3 {
 }
 
 /* Buttons */
-.map-btn, .gift-btn {
+.map-btn,
+.gift-btn {
     display: inline-block;
     padding: 12px 30px;
     background-color: var(--primary-color);
@@ -183,36 +191,151 @@ h1, h2, h3 {
     transition: var(--transition);
 }
 
-.map-btn:hover, .gift-btn:hover {
+.map-btn:hover,
+.gift-btn:hover {
     background-color: #6c5f42;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(139, 122, 88, 0.4);
 }
 
-/* Gallery */
-.gallery {
-    columns: 3 250px;
-    gap: 1.5rem;
-    padding: 0 2rem;
+/* Custom 6-image Staggered Layout */
+.gallery.custom-layout {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.gallery-item {
-    display: inline-block;
+.gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gallery-col.left-col {
+    flex: 1.2;
+    margin-top: 60px;
+}
+
+.gallery-col.mid-col {
+    flex: 1;
+}
+
+.gallery-col.right-col {
+    flex: 1.1;
+    margin-top: 40px;
+}
+
+.custom-layout .gallery-item {
+    border: 6px solid #f1f1f1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: #f1f1f1;
+    border-radius: 0;
     width: 100%;
-    margin-bottom: 1.5rem;
     overflow: hidden;
-    border-radius: 10px;
+    cursor: pointer;
 }
 
-.gallery-item img {
+.custom-layout .gallery-item img {
+    border-radius: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.1);
+.custom-layout .gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Specific sizing */
+.left-col .item-push-right {
+    width: 90%;
+    margin-left: auto;
+}
+
+.right-col .item-pull-left {
+    width: 90%;
+    margin-right: auto;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    border: 10px solid #ffffff;
+    /* Khung viền trắng */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    user-select: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.prev-btn,
+.next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.prev-btn {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Gift Section */
@@ -228,7 +351,7 @@ h1, h2, h3 {
     background: var(--light-color);
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     max-width: 350px;
     flex: 1;
     min-width: 300px;
@@ -265,16 +388,26 @@ h1, h2, h3 {
 
 /* Footer */
 #footer {
-    background-color: var(--primary-color);
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/img_wedding/footer-bg.jpg');
+    background-size: cover;
+    background-position: center;
     color: var(--light-color);
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #footer h2 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--light-color);
+    position: relative;
+    z-index: 2;
 }
 
 .names-sm {
@@ -290,11 +423,11 @@ h1, h2, h3 {
     .names {
         font-size: 3rem;
     }
-    
+
     .section {
         padding: 4rem 1.5rem;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
@@ -303,18 +436,28 @@ h1, h2, h3 {
         width: 80px;
         padding: 1rem 0.5rem;
     }
-    
+
     .time-box span {
         font-size: 1.8rem;
     }
-    
-    .venue-container, .gift-container {
+
+    .venue-container,
+    .gift-container {
         gap: 1.5rem;
     }
-    
-    .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-        padding: 0;
+
+    .gallery.custom-layout {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+
+    .gallery-col.left-col,
+    .gallery-col.right-col {
+        margin-top: 0;
+    }
+
+    .left-col .item-push-right,
+    .right-col .item-pull-left {
+        width: 100%;
     }
 }

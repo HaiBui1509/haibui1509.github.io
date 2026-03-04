@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Cưới | Bùi Đình Hải & Nguyễn Ninh Giang</title>
+    <title>Thiệp Cưới | Đình Hải & Ninh Giang</title>
     <!-- Use elegant web fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap"
@@ -18,7 +18,7 @@
     <header id="cover" class="section">
         <div class="header-overlay">
             <h3 class="save-the-date">Save The Date</h3>
-            <h1 class="names">Bùi Đình Hải<br><span>&</span><br>Nguyễn Ninh Giang</h1>
+            <h1 class="names">Đình Hải<br><span>&</span><br>Ninh Giang</h1>
             <p class="date-big">28 & 29 - 03 - 2026</p>
         </div>
     </header>
@@ -61,7 +61,7 @@
                         11/02 Bính Ngọ Âm Lịch)</span></p>
                 <p class="address">Tiên Lãng, Hải Phòng</p>
                 <!-- Replace 'href' with real Google Map link -->
-                <a href="https://maps.google.com/?q=Tien+Lang,+Hai+Phong" target="_blank" class="map-btn">Mở Google
+                <a href="https://maps.app.goo.gl/ce8UH2yt2kmupj7k7" target="_blank" class="map-btn">Mở Google
                     Maps</a>
             </div>
 
@@ -72,7 +72,7 @@
                         10/02 Bính Ngọ Âm Lịch)</span></p>
                 <p class="address">Uông Bí, Quảng Ninh</p>
                 <!-- Replace 'href' with real Google Map link -->
-                <a href="https://maps.google.com/?q=Uong+Bi,+Quang+Ninh" target="_blank" class="map-btn">Mở Google
+                <a href="https://maps.app.goo.gl/LLu3eC2hhonnHTZL8" target="_blank" class="map-btn">Mở Google
                     Maps</a>
             </div>
 
@@ -82,13 +82,30 @@
     <!-- Photo Album -->
     <section id="album" class="section">
         <h2 class="section-title">Khoảnh Khắc Đẹp</h2>
-        <div class="gallery">
-            <div class="gallery-item"><img src="assets/img_wedding/anh1.jpg" alt="Wedding 1"></div>
-            <div class="gallery-item"><img src="assets/img_wedding/anh2.jpg" alt="Wedding 2"></div>
-            <div class="gallery-item"><img src="assets/img_wedding/anh3.jpg" alt="Wedding 3"></div>
-            <div class="gallery-item"><img src="assets/img_wedding/anh4.jpg" alt="Wedding 4"></div>
-            <div class="gallery-item"><img src="assets/img_wedding/anh5.jpg" alt="Wedding 5"></div>
-            <div class="gallery-item"><img src="assets/img_wedding/anh6.jpg" alt="Wedding 6"></div>
+        <div class="gallery custom-layout">
+            <div class="gallery-col left-col">
+                <div class="gallery-item" onclick="openLightbox(0)"><img src="assets/img_wedding/album/1.jpg"
+                        alt="Wedding 1"></div>
+                <div class="gallery-item item-push-right" onclick="openLightbox(1)"><img
+                        src="assets/img_wedding/album/2.jpg" alt="Wedding 2"></div>
+            </div>
+
+            <div class="gallery-col mid-col">
+                <div class="gallery-item" onclick="openLightbox(2)"><img src="assets/img_wedding/album/3.jpg"
+                        alt="Wedding 3"></div>
+                <div class="gallery-item" onclick="openLightbox(3)"><img src="assets/img_wedding/album/4.jpg"
+                        alt="Wedding 4"></div>
+            </div>
+
+            <div class="gallery-col right-col">
+                <div class="gallery-item item-pull-left" onclick="openLightbox(5)"><img
+                        src="assets/img_wedding/album/6.jpg" alt="Wedding 6"></div>
+                <div class="gallery-item" onclick="openLightbox(4)"><img src="assets/img_wedding/album/5.jpg"
+                        alt="Wedding 5"></div>
+            </div>
+        </div>
+        <div style="margin-top: 3rem;">
+            <button class="gift-btn" onclick="openLightbox(0)">Xem Toàn Bộ Album Ánh</button>
         </div>
     </section>
 
@@ -127,8 +144,16 @@
     <footer id="footer">
         <h2>Trân trọng cảm ơn!</h2>
         <p>Hẹn gặp bạn trong ngày vui của chúng tôi.</p>
-        <p class="names-sm">Bùi Đình Hải & Nguyễn Ninh Giang</p>
+        <p class="names-sm">Đình Hải & Ninh Giang</p>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox hidden">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <button class="prev-btn" onclick="changeImage(-1)">&#10094;</button>
+        <img id="lightbox-img" class="lightbox-content" src="">
+        <button class="next-btn" onclick="changeImage(1)">&#10095;</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
