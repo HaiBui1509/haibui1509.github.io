@@ -31,14 +31,10 @@ const x = setInterval(function () {
     // Display the result in the corresponding elements
     const elmDays = document.getElementById("days");
     const elmHours = document.getElementById("hours");
-    const elmMinutes = document.getElementById("minutes");
-    const elmSeconds = document.getElementById("seconds");
 
     // Format numbers to always show two digits
     if (elmDays) elmDays.innerHTML = days < 10 ? "0" + Math.max(0, days) : days;
     if (elmHours) elmHours.innerHTML = hours < 10 ? "0" + Math.max(0, hours) : hours;
-    if (elmMinutes) elmMinutes.innerHTML = minutes < 10 ? "0" + Math.max(0, minutes) : minutes;
-    if (elmSeconds) elmSeconds.innerHTML = seconds < 10 ? "0" + Math.max(0, seconds) : seconds;
 
     // If the count down is finished, display a message
     if (distance < 0) {
