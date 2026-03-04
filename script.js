@@ -62,10 +62,30 @@ function toggleQR(id) {
 }
 
 // --- LIGHTBOX GALLERY SETTINGS ---
-// Config total images in the album folder
-const totalAlbumImages = 20; // Cô dâu chú rể có thể đổi số này tuỳ tổng số ảnh
 const albumFolderPath = 'assets/img_wedding/album/';
 const albumExtension = '.jpg';
+let totalAlbumImages = 0; // Sẽ được code tự động đếm
+
+// Code tự động dò tìm và đếm số lượng ảnh trong thư mục
+function autoCountImages() {
+    let count = 1;
+    function checkNextImage() {
+        let img = new Image();
+        img.onload = function () {
+            totalAlbumImages = count; // Nếu ảnh kề tiếp tồn tại, cập nhật tổng số
+            count++;
+            checkNextImage(); // Tiếp tục dò ảnh tiếp theo
+        };
+        img.onerror = function () {
+            // Khi không tìm thấy ảnh nữa (ví dụ ảnh số 7), vòng lặp kết thúc
+            console.log("Đã tự động đếm được: " + totalAlbumImages + " ảnh trong album.");
+        };
+        img.src = `${albumFolderPath}${count}${albumExtension}`;
+    }
+    checkNextImage();
+}
+// Chạy hàm đếm ngay khi trang web tải
+autoCountImages();
 
 let currentImageIndex = 0;
 
