@@ -147,18 +147,72 @@ function updateLightboxImage() {
 }
 
 // --- LOADING SCREEN ---
-window.addEventListener('load', function () {
-    // Wait a bit to ensure all images are loaded
-    setTimeout(function () {
-        const loadingScreen = document.getElementById('loading-screen');
-        const body = document.body;
-        
-        if (loadingScreen) {
-            loadingScreen.classList.add('hidden');
-            body.classList.remove('loading');
-        }
-    }, 500); // Small delay to ensure smooth transition
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const body = document.body;
+    
+    if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+        loadingScreen.classList.add('hidden');
+        body.classList.remove('loading');
+    }
+}
+
+// Multiple ways to detect when page is ready (for different browsers/WebViews)
+let loadingHidden = false;
+
+// Method 1: DOMContentLoaded (faster, doesn't wait for images)
+document.addEventListener('DOMContentLoaded', function () {
+    if (!loadingHidden) {
+        setTimeout(hideLoadingScreen, 800);
+    }
 });
+
+// Method 2: window.load (waits for all resources)
+window.addEventListener('load', function () {
+    if (!loadingHidden) {
+        setTimeout(hideLoadingScreen, 500);
+        loadingHidden = true;
+    }
+});
+
+// Method 3: Check readyState immediately (in case page already loaded)
+if (document.readyState === 'complete') {
+    setTimeout(hideLoadingScreen, 300);
+    loadingHidden = true;
+} else if (document.readyState === 'interactive') {
+    setTimeout(hideLoadingScreen, 800);
+}
+
+// Method 4: Fallback timeout (always hide after 3 seconds max)
+setTimeout(function () {
+    if (!loadingHidden) {
+        hideLoadingScreen();
+        loadingHidden = true;
+    }
+}, 3000);
+
+// Method 5: Handle errors (hide loading even if errors occur)
+window.addEventListener('error', function () {
+    setTimeout(function () {
+        if (!loadingHidden) {
+            hideLoadingScreen();
+            loadingHidden = true;
+        }
+    }, 1000);
+}, true);
+
+// Method 6: For WebView compatibility - check periodically
+let checkCount = 0;
+const checkInterval = setInterval(function () {
+    checkCount++;
+    if (document.readyState === 'complete' || checkCount >= 10) {
+        clearInterval(checkInterval);
+        if (!loadingHidden) {
+            setTimeout(hideLoadingScreen, 200);
+            loadingHidden = true;
+        }
+    }
+}, 300);
 
 // --- SCROLL ANIMATION OBSERVER ---
 document.addEventListener('DOMContentLoaded', function () {
