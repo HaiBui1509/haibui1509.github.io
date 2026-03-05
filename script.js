@@ -146,6 +146,20 @@ function updateLightboxImage() {
     }
 }
 
+// --- LOADING SCREEN ---
+window.addEventListener('load', function () {
+    // Wait a bit to ensure all images are loaded
+    setTimeout(function () {
+        const loadingScreen = document.getElementById('loading-screen');
+        const body = document.body;
+        
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+            body.classList.remove('loading');
+        }
+    }, 500); // Small delay to ensure smooth transition
+});
+
 // --- SCROLL ANIMATION OBSERVER ---
 document.addEventListener('DOMContentLoaded', function () {
     const observer = new IntersectionObserver((entries) => {
