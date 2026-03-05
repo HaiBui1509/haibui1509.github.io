@@ -18,11 +18,20 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
 body {
     font-family: var(--font-text);
     color: var(--text-color);
     background-color: var(--secondary-color);
     line-height: 1.6;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior-y: none;
 }
 
 /* Typography elements */
@@ -31,11 +40,17 @@ h2,
 h3 {
     font-family: var(--font-heading);
     font-weight: 700;
+    touch-action: pan-y;
+}
+
+p {
+    touch-action: pan-y;
 }
 
 .section {
     padding: 6rem 2rem;
     text-align: center;
+    touch-action: pan-y;
 }
 
 .section-title {
@@ -236,6 +251,7 @@ h3 {
     width: 100%;
     overflow: hidden;
     cursor: pointer;
+    touch-action: pan-y;
 }
 
 .custom-layout .gallery-item img {
@@ -245,6 +261,8 @@ h3 {
     display: block;
     object-fit: cover;
     transition: transform 0.5s ease;
+    touch-action: pan-y;
+    -webkit-user-drag: none;
 }
 
 .custom-layout .gallery-item:hover img {
