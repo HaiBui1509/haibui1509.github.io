@@ -111,25 +111,23 @@
             QR dưới đây.</p>
 
         <div class="gift-container">
-            <div class="gift-card animate-on-scroll slide-up" onclick="toggleQR('groom-qr')">
+            <div class="gift-card animate-on-scroll slide-up">
                 <h3>Quà Cho Chú Rể</h3>
-                <button class="gift-btn">Hiển thị QR</button>
+                <button class="gift-btn" onclick="toggleQR('groom-qr', this)">Hiển thị QR</button>
                 <div id="groom-qr" class="qr-code hidden">
-                    <!-- Temporary placeholder for QR -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
-                        alt="Groom QR">
-                    <p>Vietcombank - 0123456789<br>NGUYEN NAM SON</p>
+                    <img src="assets/img_wedding/qr_chure.jpg"
+                        alt="QR Chú Rể">
+                    <p>BIDV - 2601259040<br>BUI DINH HAI</p>
                 </div>
             </div>
 
-            <div class="gift-card animate-on-scroll slide-up" onclick="toggleQR('bride-qr')">
+            <div class="gift-card animate-on-scroll slide-up">
                 <h3>Quà Cho Cô Dâu</h3>
-                <button class="gift-btn">Hiển thị QR</button>
+                <button class="gift-btn" onclick="toggleQR('bride-qr', this)">Hiển thị QR</button>
                 <div id="bride-qr" class="qr-code hidden">
-                    <!-- Temporary placeholder for QR -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
-                        alt="Bride QR">
-                    <p>Techcombank - 9876543210<br>TRAN HOAI THUONG</p>
+                    <img src="assets/img_wedding/qr_codau.jpg"
+                        alt="QR Cô Dâu">
+                    <p>Vietcombank - 1016244228<br>NGUYEN NINH GIANG</p>
                 </div>
             </div>
         </div>
