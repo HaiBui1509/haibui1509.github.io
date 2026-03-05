@@ -47,17 +47,25 @@ const x = setInterval(function () {
 }, 1000);
 
 // QR Code Toggle Logic for the Gift Section
-function toggleQR(id) {
+function toggleQR(id, buttonElement) {
     const el = document.getElementById(id);
     if (!el) return;
 
     // Check if it's currently hidden
     if (el.classList.contains('hidden')) {
         el.classList.remove('hidden');
+        // Change button text to "Thu gọn"
+        if (buttonElement) {
+            buttonElement.textContent = 'Thu gọn';
+        }
         // Optional: you can scroll to it slightly if needed
         el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
         el.classList.add('hidden');
+        // Change button text back to "Hiển thị QR"
+        if (buttonElement) {
+            buttonElement.textContent = 'Hiển thị QR';
+        }
     }
 }
 
