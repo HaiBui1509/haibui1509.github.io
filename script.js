@@ -146,65 +146,8 @@ function updateLightboxImage() {
     }
 }
 
-let heartInterval;
-function createRandomHeart() {
-    const container = document.getElementById('open-invitation-container');
-    if (!container || container.classList.contains('hidden')) return;
-
-    // Change: Tạo ra 4-6 trái tim cùng lúc mỗi nhịp đập thay vì 1
-    const heartCount = Math.floor(Math.random() * 3) + 4;
-
-    for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤';
-        heart.className = 'heart-ripple';
-
-        // Random angle (0 to 360 deg) and random distance
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 80 + Math.random() * 100; // 80px to 180px
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
-
-        // Random gentle colors ('--primary-color' #8B7A58, #F8F5EE, whites, soft golds, vanilla)
-        const colors = ['#8B7A58', '#A2916F', '#C3B091', '#E8E1D3', '#FFFFFF', '#F5DEB3'];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-
-        // Random size
-        const size = 0.8 + Math.random() * 1.5;
-
-        heart.style.setProperty('--tx', `${tx}px`);
-        heart.style.setProperty('--ty', `${ty}px`);
-        heart.style.color = color;
-        heart.style.fontSize = `${size}rem`;
-
-        container.appendChild(heart);
-
-        // Remove heart after animation completes (2.5s)
-        setTimeout(() => {
-            heart.remove();
-        }, 2500);
-    }
-}
-
 // --- LOADING SCREEN ---
 function hideLoadingScreen() {
-    const loadingSpinner = document.getElementById('loading-spinner');
-    const loadingText = document.getElementById('loading-text');
-    const openContainer = document.getElementById('open-invitation-container');
-
-    // Hide spinner and text, show button container
-    if (loadingSpinner) loadingSpinner.classList.add('hidden');
-    if (loadingText) loadingText.classList.add('hidden');
-    if (openContainer) {
-        openContainer.classList.remove('hidden');
-        // Start spawning hearts 
-        if (!heartInterval) {
-            heartInterval = setInterval(createRandomHeart, 200); // 5 hearts per second
-        }
-    }
-}
-
-function startInvitation() {
     const loadingScreen = document.getElementById('loading-screen');
     const body = document.body;
 
@@ -213,25 +156,14 @@ function startInvitation() {
         body.classList.remove('loading');
     }
 
-    // Stop heart animation
-    if (heartInterval) clearInterval(heartInterval);
-
-    // Thử phát nhạc ngay khi người dùng bấm mở thiệp
+    // Thử phát nhạc ngay khi ẩn màn hình loading
     if (typeof playMusicOnInteraction === 'function') {
         playMusicOnInteraction();
     }
 }
 
-// Attach click event to the Open Invitation button
-document.addEventListener('DOMContentLoaded', function () {
-    const openBtn = document.getElementById('open-invitation-btn');
-    if (openBtn) {
-        openBtn.addEventListener('click', startInvitation);
-    }
-});
-
 // Multiple ways to detect when page is ready (for different browsers/WebViews)
-let loadingHidden = false; // This flag now indicates if the spinner/text are hidden and button is shown
+let loadingHidden = false;
 
 // Method 1: DOMContentLoaded (faster, doesn't wait for images)
 document.addEventListener('DOMContentLoaded', function () {

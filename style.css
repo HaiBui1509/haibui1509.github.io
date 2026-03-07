@@ -626,10 +626,6 @@ h3 {
     pointer-events: none;
 }
 
-.loading-content .hidden {
-    display: none !important;
-}
-
 .loading-content {
     text-align: center;
 }
@@ -674,59 +670,6 @@ h3 {
     color: var(--primary-color);
     letter-spacing: 2px;
 }
-
-/* --- OPEN INVITATION ANIMATIONS --- */
-.pulse-button {
-    animation: pulse-bounce 1.5s infinite;
-}
-
-@keyframes pulse-bounce {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(139, 122, 88, 0.7);
-    }
-
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(139, 122, 88, 0);
-    }
-
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(139, 122, 88, 0);
-    }
-}
-
-.heart-ripple {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ff4d4d;
-    /* Heart color */
-    font-size: 1.5rem;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
-    animation: heart-splash 2s infinite ease-out;
-}
-
-@keyframes heart-splash {
-    0% {
-        transform: translate(-50%, -50%) scale(0.2);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, -100px))) scale(1.5);
-        opacity: 0;
-    }
-}
-
 
 /* --- MUSIC CONTROL --- */
 .music-control {
