@@ -18,19 +18,11 @@
     box-sizing: border-box;
 }
 
-html {
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-}
-
 body {
     font-family: var(--font-text);
     color: var(--text-color);
     background-color: var(--secondary-color);
     line-height: 1.6;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    overscroll-behavior-y: none;
 }
 
 body.loading {
@@ -67,13 +59,13 @@ h3 {
 /* Cover Section */
 #cover {
     height: 100vh;
+    height: 100dvh;
     background: url('assets/img_wedding/cover.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     padding: 0;
-    -webkit-overflow-scrolling: touch;
 }
 
 /* Overlay for cover */
@@ -85,14 +77,12 @@ h3 {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
-    pointer-events: none;
 }
 
 .header-overlay {
     position: relative;
     z-index: 1;
     color: var(--light-color);
-    pointer-events: none;
 }
 
 .save-the-date {
@@ -101,14 +91,12 @@ h3 {
     text-transform: uppercase;
     margin-bottom: 2rem;
     font-weight: 400;
-    pointer-events: none;
 }
 
 .names {
     font-size: 4.5rem;
     line-height: 1.2;
     margin-bottom: 2rem;
-    pointer-events: none;
 }
 
 .names span {
@@ -117,13 +105,11 @@ h3 {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin: 0 1rem;
-    pointer-events: none;
 }
 
 .date-big {
     font-size: 1.5rem;
     letter-spacing: 2px;
-    pointer-events: none;
 }
 
 /* Countdown */
