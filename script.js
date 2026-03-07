@@ -150,7 +150,7 @@ function updateLightboxImage() {
 function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     const body = document.body;
-    
+
     if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
         loadingScreen.classList.add('hidden');
         body.classList.remove('loading');
@@ -229,3 +229,46 @@ document.addEventListener('DOMContentLoaded', function () {
     const hiddenElements = document.querySelectorAll('.animate-on-scroll');
     hiddenElements.forEach((el) => observer.observe(el));
 });
+
+// --- BACKGROUND MUSIC LOGIC ---
+let musicStarted = false;
+const bgMusic = document.getElementById("bg-music");
+const musicControl = document.getElementById("music-control");
+
+function toggleMusic() {
+    if (!bgMusic) return;
+
+    if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+            musicControl.classList.add("playing");
+            musicControl.classList.remove("disabled");
+        }).catch(err => console.log("Lỗi phát nhạc: ", err));
+    } else {
+        bgMusic.pause();
+        musicControl.classList.remove("playing");
+        musicControl.classList.add("disabled");
+    }
+}
+
+// Auto-play music on first user interaction (click or scroll)
+function playMusicOnInteraction() {
+    if (!musicStarted && bgMusic) {
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            musicControl.classList.add("playing");
+            musicControl.classList.remove("disabled");
+
+            // Remove listeners once started
+            document.removeEventListener('click', playMusicOnInteraction);
+            document.removeEventListener('touchstart', playMusicOnInteraction);
+            document.removeEventListener('scroll', playMusicOnInteraction);
+        }).catch(err => {
+            console.log("Auto-play bị chặn, chờ người dùng thao tác: ", err);
+        });
+    }
+}
+
+// Attach starting listeners
+document.addEventListener('click', playMusicOnInteraction);
+document.addEventListener('touchstart', playMusicOnInteraction, { passive: true });
+document.addEventListener('scroll', playMusicOnInteraction, { passive: true });
