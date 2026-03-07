@@ -30,7 +30,6 @@ body {
     line-height: 1.6;
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch;
-    touch-action: pan-y;
     overscroll-behavior-y: none;
 }
 
@@ -45,17 +44,11 @@ h2,
 h3 {
     font-family: var(--font-heading);
     font-weight: 700;
-    touch-action: pan-y;
-}
-
-p {
-    touch-action: pan-y;
 }
 
 .section {
     padding: 6rem 2rem;
     text-align: center;
-    touch-action: pan-y;
 }
 
 .section-title {
@@ -80,7 +73,6 @@ p {
     align-items: center;
     position: relative;
     padding: 0;
-    touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -94,14 +86,12 @@ p {
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
     pointer-events: none;
-    touch-action: pan-y;
 }
 
 .header-overlay {
     position: relative;
     z-index: 1;
     color: var(--light-color);
-    touch-action: pan-y;
     pointer-events: none;
 }
 
@@ -111,7 +101,6 @@ p {
     text-transform: uppercase;
     margin-bottom: 2rem;
     font-weight: 400;
-    touch-action: pan-y;
     pointer-events: none;
 }
 
@@ -119,7 +108,6 @@ p {
     font-size: 4.5rem;
     line-height: 1.2;
     margin-bottom: 2rem;
-    touch-action: pan-y;
     pointer-events: none;
 }
 
@@ -129,14 +117,12 @@ p {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin: 0 1rem;
-    touch-action: pan-y;
     pointer-events: none;
 }
 
 .date-big {
     font-size: 1.5rem;
     letter-spacing: 2px;
-    touch-action: pan-y;
     pointer-events: none;
 }
 
@@ -270,7 +256,6 @@ p {
     width: 100%;
     overflow: hidden;
     cursor: pointer;
-    touch-action: pan-y;
 }
 
 .custom-layout .gallery-item img {
@@ -280,7 +265,6 @@ p {
     display: block;
     object-fit: cover;
     transition: transform 0.5s ease;
-    touch-action: pan-y;
     -webkit-user-drag: none;
 }
 
@@ -678,6 +662,7 @@ p {
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -687,6 +672,7 @@ p {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
