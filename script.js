@@ -155,11 +155,6 @@ function hideLoadingScreen() {
         loadingScreen.classList.add('hidden');
         body.classList.remove('loading');
     }
-
-    // Thử phát nhạc ngay khi ẩn màn hình loading
-    if (typeof playMusicOnInteraction === 'function') {
-        playMusicOnInteraction();
-    }
 }
 
 // Multiple ways to detect when page is ready (for different browsers/WebViews)
